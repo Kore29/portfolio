@@ -61,7 +61,28 @@ Este comando levantará:
 * **Ver los logs del despliegue automático:**
   Puedes verificar si Watchtower está buscando e instalando actualizaciones revisando sus logs:
   ```bash
-  |docker logs -f portfolio-watchtower
+  docker logs -f portfolio-watchtower
   ```
 * **Limpieza de disco:**
   Watchtower está configurado con la bandera `--cleanup`, lo que garantiza que las versiones antiguas y en desuso de tus imágenes Docker se eliminen del servidor tras cada actualización exitosa, evitando el desgaste de espacio en disco.
+
+---
+
+## Endpoint de Health Check (Monitoreo de Estado)
+
+El contenedor expone un endpoint dedicado y ligero para herramientas de monitoreo (como Sira, Uptime Kuma o Cloudflare):
+
+* **URL:** `/api/health`
+* **Respuesta esperada:** `HTTP 200 OK` con JSON `{"status": "ok", "uptime": ...}`
+
+Configurar Sira o tu monitor de uptime apuntando a `https://tudominio.com/api/health` en lugar de la raíz `/` evita redirecciones de i18n y asegura verificaciones súper rápidas.
+
+---
+
+## Recomendaciones para Evitar Alertas de Downtime (502) en Actualizaciones
+
+Si Watchtower reinicia el contenedor al detectar una nueva versión de la imagen en GHCR, la aplicación tarda ~30 segundos en inicializar Node.js/Next.js:
+
+1. **Monitoreo con reintentos en Sira:** Configura tu monitor Uptime (Sira) con al menos 2 ó 3 reintentos (retry count: 2) con 10-15 segundos de diferencia antes de disparar la alerta de caída a Telegram/Discord.
+2. **Healthchecks en Docker:** El servicio `portfolio-web` en `docker-compose.prod.yml` cuenta con `healthcheck` integrado para que Docker reporte el estado `healthy` únicamente cuando Node.js está listo para recibir tráfico.
+
