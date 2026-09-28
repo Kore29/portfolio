@@ -5,13 +5,19 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
-    id: "independent",
-    learnMoreUrl: "#"
+    id: "upc",
+  },
+  {
+    id: "datacamp",
+  },
+  {
+    id: "aetthel",
+    learnMoreUrl: "https://aetthel.com",
   },
   {
     id: "programame",
   },
   {
     id: "codewars",
-  }
+  },
 ];

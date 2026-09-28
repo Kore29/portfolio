@@ -19,11 +19,23 @@
   "Experience": {
     "title": "mi experiencia",
     "learnMore": "saber más...",
-    "independent": {
-      "company": "Cursos y Certificaciones",
-      "role": "Estudio Independiente",
-      "period": "Verano 2025",
-      "description": "Completé un total de 5 cursos cubriendo diseño de interfaces con Tailwind, desarrollo frontend con React, sistemas backend con Node.js, Express y MongoDB, e introducción a la IA y el aprendizaje automático con Python."
+    "upc": {
+      "company": "Universitat Politècnica de Catalunya (UPC)",
+      "role": "Ingeniero de Software",
+      "period": "Septiembre 2026 — Presente",
+      "description": "Estudiante de Ingeniería de Software en la UPC, profundizando en arquitectura de software, diseño de sistemas, algoritmos y computación."
+    },
+    "datacamp": {
+      "company": "DataCamp",
+      "role": "Associate AI Engineer for Developers",
+      "period": "Septiembre 2026",
+      "description": "Completé el track profesional de DataCamp que abarca más de 30 horas de formación técnica en 10 cursos especializados y proyectos prácticos. Enfocado en OpenAI API, prompt engineering, LangChain, modelos abiertos de Hugging Face, bases de datos vectoriales Pinecone, LLMOps y estándares MCP, culminando en un proyecto práctico de sistema RAG."
+    },
+    "aetthel": {
+      "company": "Aetthel",
+      "role": "Cofundador y Desarrollador",
+      "period": "Agosto 2026",
+      "description": "Cofundé y lancé Aetthel junto a Alex Cortell Belenguer para ofrecer desarrollo web a medida y soluciones de automatización de tareas diarias para empresas y proyectos, marcando un paso adelante en la gestión de proyectos y relación directa con clientes."
     },
     "programame": {
       "company": "Final Nacional ProgramaMe — Madrid",

@@ -36,12 +36,12 @@ export default async function AboutPage({
         {/* Right: Portrait Image */}
         <div className="lg:col-span-5 relative w-full aspect-[4/5] overflow-hidden rounded-xl border border-zinc-800 shadow-2xl">
           <Image
-            src="/me/profile-hero.webp"
+            src="/me/_DSC0396.jpg"
             alt="Martí Castaño"
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 400px"
-            className="object-cover transition-all duration-700"
+            className="object-cover object-top transition-all duration-700"
           />
         </div>
       </div>
@@ -80,6 +80,8 @@ export default async function AboutPage({
                   {exp.learnMoreUrl && (
                     <a
                       href={exp.learnMoreUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-block mt-3 text-zinc-400 hover:text-white transition-colors border-b border-zinc-700 hover:border-white text-size-small"
                     >
                       {tExp("learnMore")}

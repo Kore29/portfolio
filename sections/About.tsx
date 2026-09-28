@@ -49,16 +49,16 @@ export default function About() {
         ))}
       </h2>
 
-      {/* 3-Column Bottom Info Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mt-20">
+      {/* 2-Column Bottom Info Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 mt-20 items-start">
         {/* Column 1: Cover Photo */}
-        <div className="relative w-full aspect-square overflow-hidden rounded-lg border border-zinc-900 shadow-2xl md:col-span-2 lg:col-span-1">
+        <div className="relative w-full aspect-square max-w-lg overflow-hidden rounded-lg border border-zinc-900 shadow-2xl">
           <Image
-            src="/me/profile-about.webp"
+            src="/me/_DSC0386.jpg"
             alt="Martí Castaño"
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
-            className="about-photo object-cover"
+            sizes="(max-width: 768px) 100vw, 500px"
+            className="about-photo object-cover object-top"
           />
         </div>
 
@@ -68,7 +68,7 @@ export default function About() {
             <span className="text-zinc-400 font-sans text-size-small">
               {t("approachTitle")}
             </span>
-            <p className="text-zinc-200 font-sans mt-3 text-size-small">
+            <p className="text-zinc-200 font-sans mt-3 text-size-small leading-relaxed">
               {t("approachDesc")}
             </p>
           </div>
@@ -79,16 +79,6 @@ export default function About() {
           >
             {t("downloadResume")}
           </a>
-        </div>
-
-        {/* Column 3: when i'm not coding */}
-        <div className="flex flex-col">
-          <span className="text-zinc-400 font-sans text-size-small">
-            {t("notCodingTitle")}
-          </span>
-          <p className="text-zinc-200 font-sans mt-3 text-size-small">
-            {t("notCodingDesc")}
-          </p>
         </div>
       </div>
     </section>
