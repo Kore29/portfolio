@@ -14,8 +14,7 @@ jobs:
     name: Build and push Docker image
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      packages: write
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -38,7 +37,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=ref,event=branch
-            type=sha,prefix=sha-
+            type=sha,prefix=sha-,format=short
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
 
       - name: Build and push Docker image
@@ -49,6 +48,18 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          # Cache layers between builds for faster subsequent builds
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Update docker-compose.prod.yml with new tag
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          SHORT_SHA=$(git rev-parse --short HEAD)
+
+          sed -i "s|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:.*|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${SHORT_SHA}|g" docker-compose.prod.yml
+
+          git add docker-compose.prod.yml
+          git commit -m "ci: update docker-compose image tag to sha-${SHORT_SHA} [skip ci]"
+          git push
