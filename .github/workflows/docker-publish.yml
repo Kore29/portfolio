@@ -14,7 +14,8 @@ jobs:
     name: Build and push Docker image
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout repository
@@ -28,16 +29,16 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ github.repository }}
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=ref,event=branch
-            type=sha,prefix=sha-,format=short
+            type=sha,prefix=sha-
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
 
       - name: Build and push Docker image
@@ -50,16 +51,3 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      - name: Update docker-compose.prod.yml with new tag
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-          SHORT_SHA=$(git rev-parse --short HEAD)
-
-          sed -i "s|image: ${{ env.REGISTRY }}/${{ github.repository }}:.*|image: ${{ env.REGISTRY }}/${{ github.repository }}:sha-${SHORT_SHA}|g" docker-compose.prod.yml
-
-          git add docker-compose.prod.yml
-          git commit -m "ci: update docker-compose image tag to sha-${SHORT_SHA} [skip ci]"
-          git push
