@@ -3,7 +3,7 @@ name: Build & Push Docker Image
 on:
   push:
     branches: [main]
-  workflow_dispatch: # Allow manual trigger
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
@@ -34,7 +34,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ github.repository }}
           tags: |
             type=ref,event=branch
             type=sha,prefix=sha-,format=short
@@ -58,7 +58,7 @@ jobs:
 
           SHORT_SHA=$(git rev-parse --short HEAD)
 
-          sed -i "s|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:.*|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${SHORT_SHA}|g" docker-compose.prod.yml
+          sed -i "s|image: ${{ env.REGISTRY }}/${{ github.repository }}:.*|image: ${{ env.REGISTRY }}/${{ github.repository }}:sha-${SHORT_SHA}|g" docker-compose.prod.yml
 
           git add docker-compose.prod.yml
           git commit -m "ci: update docker-compose image tag to sha-${SHORT_SHA} [skip ci]"
