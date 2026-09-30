@@ -54,7 +54,7 @@ export default function About() {
         {/* Column 1: Cover Photo */}
         <div className="relative w-full aspect-square max-w-lg overflow-hidden rounded-lg border border-zinc-900 shadow-2xl">
           <Image
-            src="/me/_DSC0386.jpg"
+            src="/me/_DSC0386.webp"
             alt="Martí Castaño"
             fill
             sizes="(max-width: 768px) 100vw, 500px"

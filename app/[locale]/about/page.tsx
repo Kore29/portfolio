@@ -36,7 +36,7 @@ export default async function AboutPage({
         {/* Right: Portrait Image */}
         <div className="lg:col-span-5 relative w-full aspect-[4/5] overflow-hidden rounded-xl border border-zinc-800 shadow-2xl">
           <Image
-            src="/me/_DSC0396.jpg"
+            src="/me/_DSC0396.webp"
             alt="Martí Castaño"
             fill
             priority
