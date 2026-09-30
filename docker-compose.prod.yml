@@ -1,6 +1,6 @@
 services:
   portfolio-web:
-    image: ghcr.io/kore29/portfolio-web:latest
+    image: ghcr.io/kore29/portfolio:latest
     container_name: portfolio-web
     restart: unless-stopped
     environment:
