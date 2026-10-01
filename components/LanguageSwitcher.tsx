@@ -59,19 +59,19 @@ export default function LanguageSwitcher() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 bg-[#111] border border-zinc-800 rounded-md shadow-xl overflow-hidden z-50 min-w-[110px]">
+        <div className="absolute right-0 top-full mt-2 bg-white dark:bg-[#111] border border-zinc-200 dark:border-zinc-800 rounded-md shadow-xl overflow-hidden z-50 min-w-[110px]">
           {locales.map((locale) => (
             <button
               key={locale.code}
               onClick={() => switchLocale(locale.code)}
               className={`w-full text-left px-3 py-2 text-size-small font-sans tracking-wider flex items-center justify-between gap-3 transition-colors cursor-pointer ${
                 locale.code === currentLocale
-                  ? "text-white bg-zinc-800/60"
-                  : "text-zinc-400 hover:text-white hover:bg-zinc-800/40"
+                  ? "text-zinc-900 bg-zinc-100 dark:text-white dark:bg-zinc-800/60"
+                  : "text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:text-white dark:hover:bg-zinc-800/40"
               }`}
             >
               <span className="uppercase">{locale.label}</span>
-              <span className="normal-case text-zinc-500 text-xs">{locale.name}</span>
+              <span className="normal-case text-zinc-400 dark:text-zinc-500 text-xs">{locale.name}</span>
             </button>
           ))}
         </div>

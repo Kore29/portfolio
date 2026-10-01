@@ -20,7 +20,6 @@ export default function About() {
     () => {
       // 1. Text progressive scroll reveal
       gsap.to(".word", {
-        color: "#f4f4f5",
         opacity: 1,
         stagger: 0.05,
         duration: 0.3,
@@ -43,7 +42,7 @@ export default function About() {
         className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-sans font-normal leading-tight tracking-tight"
       >
         {phrase.split(" ").map((word, index) => (
-          <span key={index} className="word text-zinc-700 opacity-30">
+          <span key={index} className="word text-zinc-900 dark:text-zinc-100 opacity-30 transition-colors">
             {word}{" "}
           </span>
         ))}
@@ -52,7 +51,7 @@ export default function About() {
       {/* 2-Column Bottom Info Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 mt-20 items-start">
         {/* Column 1: Cover Photo */}
-        <div className="relative w-full aspect-square max-w-lg overflow-hidden rounded-lg border border-zinc-900 shadow-2xl">
+        <div className="relative w-full aspect-square max-w-lg overflow-hidden">
           <Image
             src="/me/_DSC0386.webp"
             alt="Martí Castaño"
@@ -68,7 +67,7 @@ export default function About() {
             <span className="text-zinc-400 font-sans text-size-small">
               {t("approachTitle")}
             </span>
-            <p className="text-zinc-200 font-sans mt-3 text-size-small leading-relaxed">
+            <p className="dark:text-zinc-200 font-sans mt-3 text-size-small leading-relaxed">
               {t("approachDesc")}
             </p>
           </div>

@@ -56,6 +56,7 @@ export default function TransitionLink({ href, children, onClick, ...props }: Tr
 
       // Slide the curtain up to cover the viewport
       console.log("TransitionLink: Starting exit animation");
+      curtain.style.backgroundColor = "";
       gsap.killTweensOf(curtain);
       gsap.fromTo(
         curtain,

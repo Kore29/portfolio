@@ -77,7 +77,7 @@ export default function PageHeader({ title, subtitle, marquee }: PageHeaderProps
       <h1
         ref={textRef}
         style={titleStyle}
-        className={`font-nohemi font-normal leading-[0.8] tracking-tighter text-zinc-100 inline-block ${
+        className={`font-nohemi font-normal leading-[0.8] tracking-tighter text-[#222222] dark:text-zinc-100 inline-block ${
           marquee ? "animate-marquee-single-l2r" : ""
         }`}
       >
@@ -85,7 +85,7 @@ export default function PageHeader({ title, subtitle, marquee }: PageHeaderProps
       </h1>
 
       {subtitle && (
-        <p className="mt-6 text-size-medium text-zinc-400 font-sans tracking-wide text-left md:text-right max-w-full md:max-w-[50%] ml-auto">
+        <p className="mt-6 text-size-medium text-zinc-600 dark:text-zinc-400 font-sans tracking-wide text-left md:text-right max-w-full md:max-w-[50%] ml-auto">
           {subtitle}
         </p>
       )}

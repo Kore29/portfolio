@@ -20,7 +20,7 @@ export default function PageTransition() {
       console.log("PageTransition: Creating transition curtain DOM element");
       curtain = document.createElement("div");
       curtain.id = "transition-curtain";
-      curtain.className = "fixed inset-x-0 bottom-0 h-screen w-screen bg-[#151515] z-[9999] pointer-events-none";
+      curtain.className = "fixed inset-x-0 bottom-0 h-screen w-screen bg-[#f5f5f5] dark:bg-[#1a1a1a] z-[9999] pointer-events-none";
       document.body.appendChild(curtain);
       gsap.set(curtain, { yPercent: 100, y: 0 });
     } else {
@@ -66,6 +66,7 @@ export default function PageTransition() {
             console.log("PageTransition: Entry animation complete, resetting curtain to yPercent 100");
             // Reset curtain back below the viewport off-screen for the next transition
             gsap.set(curtain, { yPercent: 100, y: 0 });
+            curtain.style.backgroundColor = "";
             // Resume scrolling momentum
             lenis?.start();
           },

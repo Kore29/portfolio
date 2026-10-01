@@ -1,4 +1,14 @@
 {
+  "Metadata": {
+    "title": "Martí Castaño | Desenvolupador Full-Stack & Intel·ligència Artificial",
+    "description": "Portfolio de Martí Castaño, desenvolupador full-stack i d'aplicacions mòbils a Barcelona especialitzat en Next.js, React Native, TypeScript i solucions amb IA.",
+    "aboutTitle": "Sobre mi",
+    "aboutDesc": "Descobreix més sobre Martí Castaño, desenvolupador full-stack a Barcelona amb experiència en arquitectura de programari, IA i sistemes web i mòbils.",
+    "workTitle": "Projectes",
+    "workDesc": "Explora els projectes de desenvolupament full-stack, aplicacions mòbils i sistemes d'Intel·ligència Artificial desenvolupats per Martí Castaño.",
+    "contactTitle": "Contacte",
+    "contactDesc": "Posa't en contacte amb en Martí Castaño per a projectes freelance, col·laboracions o contractacions a temps complet."
+  },
   "Navbar": {
     "work": "projectes",
     "about": "sobre mí",

@@ -23,13 +23,13 @@ export default function Contact({ hideCtaBanner = false }: ContactProps) {
           <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between w-full mx-auto gap-8 lg:gap-12">
             {/* Left Side: GET IN */}
             <div className="leading-none">
-              <h2 className="text-[12vw] sm:text-[10vw] lg:text-[7.5vw] xl:text-[8vw] font-nohemi tracking-tighter text-zinc-100 whitespace-nowrap select-none text-center lg:text-left">
+              <h2 className="text-[12vw] sm:text-[10vw] lg:text-[7.5vw] xl:text-[8vw] font-nohemi tracking-tighter dark:text-zinc-100 whitespace-nowrap select-none text-center lg:text-left">
                 {t("getIn")}
               </h2>
             </div>
 
             {/* Center: Video Animation */}
-            <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-[400px] lg:h-[400px] xl:w-[450px] xl:h-[450px] overflow-hidden flex-shrink-0 relative shadow-2xl rounded-xl border border-zinc-800">
+            <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-[400px] lg:h-[400px] xl:w-[450px] xl:h-[450px] overflow-hidden flex-shrink-0 relative">
               <video
                 autoPlay
                 loop
@@ -44,7 +44,7 @@ export default function Contact({ hideCtaBanner = false }: ContactProps) {
 
             {/* Right Side: TOUCH */}
             <div className="leading-none">
-              <h2 className="text-[12vw] sm:text-[10vw] lg:text-[7.5vw] xl:text-[8vw] font-nohemi tracking-tighter text-zinc-100 whitespace-nowrap select-none text-center lg:text-right">
+              <h2 className="text-[12vw] sm:text-[10vw] lg:text-[7.5vw] xl:text-[8vw] font-nohemi tracking-tighter dark:text-zinc-100 whitespace-nowrap select-none text-center lg:text-right">
                 {t("touch")}
               </h2>
             </div>
@@ -60,13 +60,7 @@ export default function Contact({ hideCtaBanner = false }: ContactProps) {
             info
           </span>
           <p className="text-zinc-400 break-all">
-            {t("email")}:{" "}
-            <a
-              href="mailto:marticastanorodriguez@gmail.com"
-              className="text-zinc-400 hover:text-zinc-200 transition-colors font-mono"
-            >
-              marticastanorodriguez@gmail.com
-            </a>
+            {t("email")}: marticastanorodriguez@gmail.com
           </p>
           <p className="text-zinc-400">{t("basedIn")}</p>
           <p className="text-zinc-400">{t("availableFor")}</p>
@@ -79,19 +73,19 @@ export default function Contact({ hideCtaBanner = false }: ContactProps) {
             <span className="text-zinc-500 mb-2">{t("pages")}</span>
             <TransitionLink
               href="/"
-              className="text-zinc-100 hover:text-zinc-400 transition-colors"
+              className="dark:text-zinc-100 hover:text-zinc-400 transition-colors"
             >
               {t("home")}
             </TransitionLink>
             <TransitionLink
               href="/about"
-              className="text-zinc-100 hover:text-zinc-400 transition-colors"
+              className="dark:text-zinc-100 hover:text-zinc-400 transition-colors"
             >
               {tNavbar("about")}
             </TransitionLink>
             <TransitionLink
               href="/work"
-              className="text-zinc-100 hover:text-zinc-400 transition-colors"
+              className="dark:text-zinc-100 hover:text-zinc-400 transition-colors"
             >
               {tNavbar("work")}
             </TransitionLink>
@@ -104,7 +98,7 @@ export default function Contact({ hideCtaBanner = false }: ContactProps) {
               href="https://github.com/Kore29"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-100 hover:text-zinc-400 transition-colors"
+              className="dark:text-zinc-100 hover:text-zinc-400 transition-colors"
             >
               github
             </a>
@@ -112,7 +106,7 @@ export default function Contact({ hideCtaBanner = false }: ContactProps) {
               href="https://www.coursera.org/user/09b51cfaa8a857c4beb926d027c32d85"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-100 hover:text-zinc-400 transition-colors"
+              className="dark:text-zinc-100 hover:text-zinc-400 transition-colors"
             >
               coursera
             </a>
@@ -120,7 +114,7 @@ export default function Contact({ hideCtaBanner = false }: ContactProps) {
               href="https://www.linkedin.com/in/marti-casta%C3%B1o-rodriguez-77a54a341/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-100 hover:text-zinc-400 transition-colors"
+              className="dark:text-zinc-100 hover:text-zinc-400 transition-colors"
             >
               linkedin
             </a>

@@ -9,9 +9,11 @@ import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import PageTransition from "@/components/PageTransition";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import JsonLd from "@/components/JsonLd";
 
 // 1. Configuración de Inter Local
 const inter = localFont({
@@ -47,20 +49,89 @@ const nohemi = localFont({
   variable: "--font-nohemi",
 });
 
-export const metadata: Metadata = {
-  title: "Martí Castaño | Fullstack Developer & AI",
-  description:
-    "Martí Castaño's professional portfolio. Fullstack developer specialized in building web applications, systems automation, and AI-powered solutions.",
-  icons: {
-    icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico" },
-      { url: "/icon.png", type: "image/png" },
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+  const baseUrl = "https://portfolio.kore29.com";
+
+  return {
+    metadataBase: new URL(baseUrl),
+    title: {
+      default: t("title"),
+      template: "%s | Martí Castaño",
+    },
+    description: t("description"),
+    keywords: [
+      "Martí Castaño",
+      "Fullstack Developer Barcelona",
+      "Desarrollador Full Stack Barcelona",
+      "Desarrollador React Native",
+      "Next.js Developer",
+      "TypeScript",
+      "Artificial Intelligence",
+      "AI Engineer",
+      "Sistemas de automatización",
+      "Barcelona",
+      "Software Engineer UPC",
     ],
-    shortcut: "/favicon.ico",
-    apple: "/apple-icon.png",
-  },
-};
+    authors: [{ name: "Martí Castaño", url: baseUrl }],
+    creator: "Martí Castaño",
+    alternates: {
+      canonical: `${baseUrl}/${locale}`,
+      languages: {
+        en: `${baseUrl}/en`,
+        es: `${baseUrl}/es`,
+        ca: `${baseUrl}/ca`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: locale === "es" ? "es_ES" : locale === "ca" ? "ca_ES" : "en_US",
+      url: `${baseUrl}/${locale}`,
+      title: t("title"),
+      description: t("description"),
+      siteName: "Martí Castaño — Fullstack Developer & AI",
+      images: [
+        {
+          url: "/me/_DSC0396.webp",
+          width: 800,
+          height: 1000,
+          alt: "Martí Castaño - Full-Stack Developer & AI Engineer",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: ["/me/_DSC0396.webp"],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    icons: {
+      icon: [
+        { url: "/icon.svg", type: "image/svg+xml" },
+        { url: "/favicon.ico" },
+        { url: "/icon.png", type: "image/png" },
+      ],
+      shortcut: "/favicon.ico",
+      apple: "/apple-icon.png",
+    },
+  };
+}
 
 // Generar rutas estáticas para compilación
 export function generateStaticParams() {
@@ -91,22 +162,28 @@ export default async function RootLayout({
     <html
       lang={locale}
       data-scroll-behavior="smooth"
+      suppressHydrationWarning
       className={cn(
-        "font-sans scroll-smooth overscroll-none bg-[#1a1a1a] text-white",
+        "font-sans scroll-smooth overscroll-none bg-[#f5f5f5] text-[#222222] dark:bg-[#1a1a1a] dark:text-white transition-colors duration-300",
         inter.variable,
         nohemi.variable,
       )}
     >
-      <body className="min-h-screen">
+      <head>
+        <JsonLd />
+      </head>
+      <body className="min-h-screen flex flex-col bg-[#f5f5f5] text-[#222222] dark:bg-[#1a1a1a] dark:text-white transition-colors duration-300">
         <NextIntlClientProvider messages={messages}>
-          <SmoothScrollProvider>
-            <CustomCursor />
-            <PageTransition />
-            <Navbar />
-            <div className="mx-auto w-full max-w-480 px-4 md:px-8 lg:px-12">
-              {children}
-            </div>
-          </SmoothScrollProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <SmoothScrollProvider>
+              <CustomCursor />
+              <PageTransition />
+              <Navbar />
+              <div className="mx-auto w-full max-w-480 px-4 md:px-8 lg:px-12 flex-1">
+                {children}
+              </div>
+            </SmoothScrollProvider>
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -82,7 +82,7 @@ export default function Projects() {
                     />
                   </div>
                   <div>
-                    <h3 className="text-zinc-100 text-size-medium">
+                    <h3 className="dark:text-zinc-100 text-size-medium">
                       {title}
                     </h3>
                     <p className="text-zinc-500 text-size-small mt-1">

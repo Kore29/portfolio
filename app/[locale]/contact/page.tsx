@@ -1,7 +1,25 @@
+import type { Metadata } from "next";
 import Contact from "@/sections/Contact";
 import PageHeader from "@/components/PageHeader";
 import ContactForm from "@/components/ContactForm";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  return {
+    title: t("contactTitle"),
+    description: t("contactDesc"),
+    alternates: {
+      canonical: `https://portfolio.kore29.com/${locale}/contact`,
+    },
+  };
+}
 
 export default async function ContactPage({
   params,

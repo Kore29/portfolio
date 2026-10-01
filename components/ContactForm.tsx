@@ -69,7 +69,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           className={`p-4 rounded border text-size-small transition-all ${
             status.type === "error"
               ? "bg-red-950/30 border-red-900/60 text-red-300"
-              : "bg-zinc-900 border-zinc-800 text-zinc-200"
+              : "bg-zinc-100 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200"
           }`}
         >
           {status.text}
@@ -79,7 +79,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {/* Name */}
         <div className="flex flex-col gap-2">
-          <label htmlFor="contact-name" className="text-zinc-400 text-size-small">
+          <label htmlFor="contact-name" className="text-zinc-600 dark:text-zinc-400 text-size-small">
             {t("nameLabel")} *
           </label>
           <input
@@ -88,13 +88,13 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800/80 rounded text-zinc-100 text-size-small placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-colors"
+            className="w-full px-4 py-3 bg-zinc-100 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/80 rounded text-zinc-900 dark:text-zinc-100 text-size-small placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-colors"
           />
         </div>
 
         {/* Email */}
         <div className="flex flex-col gap-2">
-          <label htmlFor="contact-email" className="text-zinc-400 text-size-small">
+          <label htmlFor="contact-email" className="text-zinc-600 dark:text-zinc-400 text-size-small">
             {t("emailLabel")} *
           </label>
           <input
@@ -103,14 +103,14 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800/80 rounded text-zinc-100 text-size-small placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-colors"
+            className="w-full px-4 py-3 bg-zinc-100 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/80 rounded text-zinc-900 dark:text-zinc-100 text-size-small placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-colors"
           />
         </div>
       </div>
 
       {/* Subject */}
       <div className="flex flex-col gap-2">
-        <label htmlFor="contact-subject" className="text-zinc-400 text-size-small">
+        <label htmlFor="contact-subject" className="text-zinc-600 dark:text-zinc-400 text-size-small">
           {t("subjectLabel")}
         </label>
         <input
@@ -118,13 +118,13 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           type="text"
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
-          className="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800/80 rounded text-zinc-100 text-size-small placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-colors"
+          className="w-full px-4 py-3 bg-zinc-100 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/80 rounded text-zinc-900 dark:text-zinc-100 text-size-small placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-colors"
         />
       </div>
 
       {/* Message */}
       <div className="flex flex-col gap-2">
-        <label htmlFor="contact-message" className="text-zinc-400 text-size-small">
+        <label htmlFor="contact-message" className="text-zinc-600 dark:text-zinc-400 text-size-small">
           {t("messageLabel")} *
         </label>
         <textarea
@@ -133,7 +133,7 @@ export default function ContactForm({ onSuccess }: ContactFormProps) {
           rows={6}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800/80 rounded text-zinc-100 text-size-small placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-colors resize-none"
+          className="w-full px-4 py-3 bg-zinc-100 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800/80 rounded text-zinc-900 dark:text-zinc-100 text-size-small placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-zinc-500 transition-colors resize-none"
         />
       </div>
 
